@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F4E8A3] text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
+    <main style={{ backgroundColor: '#F4E8A3' }} className="min-h-screen text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
       
       {/* ================= HEADER ================= */}
       <motion.header 
