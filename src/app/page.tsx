@@ -123,21 +123,59 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Lado Direito: Vídeo dentro de um bloco com forma de arco estilo Framer */}
-          <div className="lg:col-span-6 relative w-full h-[450px] lg:h-[520px] rounded-t-[180px] rounded-b-[24px] overflow-hidden border border-white/10 shadow-inner">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover object-center"
-            >
-              <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
-            </video>
-            {/* Sutil overlay escuro para integrar perfeitamente */}
-            <div className="absolute inset-0 bg-slate-950/15"></div>
-          </div>
+          {/* ================= HERO SECTION (ESTILO COVER / CSS GRID) ================= */}
+<section className="relative w-full pt-28 pb-12 px-6 flex justify-center">
+  <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl grid grid-cols-1 items-center bg-slate-950">
+    
+    {/* 1. VÍDEO DE FUNDO (Ocupa a célula 1/1 do Grid) */}
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      className="col-start-1 row-start-1 w-full h-full object-cover object-center min-h-[650px]"
+    >
+      <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
+    </video>
+
+    {/* 2. OVERLAY / GRADIENTE (Ocupa a mesma célula, por cima do vídeo) */}
+    <div className="col-start-1 row-start-1 w-full h-full bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/30"></div>
+
+    {/* 3. CONTEÚDO / TEXTO (Ocupa a mesma célula, flutuando à frente) */}
+    <div className="col-start-1 row-start-1 relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white">
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={staggerContainer}
+      >
+        <motion.span variants={fadeInUp} className="text-xs font-mono uppercase tracking-widest text-[#FF6B4A] block mb-4">
+          01 • SENSITIVE UTOPIA
+        </motion.span>
+        
+        <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl font-serif font-light tracking-tight leading-[1.1]">
+          Technology <br />
+          that learns to <br />
+          <span className="italic font-normal">touch with care.</span>
+        </motion.h1>
+
+        <motion.p variants={fadeInUp} className="mt-6 text-sm sm:text-base text-slate-200 font-light leading-relaxed">
+          We do not build machines that take people’s place. We cultivate sensitive extensions that protect human work from mechanical weight, so attention stays where it is irreplaceable.
+        </motion.p>
+
+        <motion.div variants={fadeInUp} className="mt-8 pt-6 border-t border-white/15">
+          <span className="text-[10px] uppercase font-mono tracking-widest text-[#A8D6BB] block mb-1">
+            OUR PROMISE
+          </span>
+          <p className="text-xs text-slate-300 italic font-serif">
+            Give your team superpowers, never replace their presence.
+          </p>
+        </motion.div>
+      </motion.div>
+    </div>
+
+  </div>
+</section>
 
         </div>
       </section>
@@ -278,27 +316,4 @@ export default function Home() {
     </main>
   );
 } 
-<!-- Container principal com a grelha/camada -->
-<div class="relative grid min-h-[500px] w-full items-center overflow-hidden rounded-3xl">
-  
-  <!-- 1. CAMADA DE FUNDO: O Vídeo e o Overlay ficam na mesma célula (linha 1, coluna 1) -->
-  <video 
-    autoplay 
-    loop 
-    muted 
-    playsinline 
-    class="col-start-1 row-start-1 h-full w-full object-cover"
-  >
-    <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
-  </video>
-
-  <!-- Overlay de cor/opacidade por cima do vídeo -->
-  <div class="col-start-1 row-start-1 h-full w-full bg-black/40 backdrop-blur-[2px]"></div>
-
-  <!-- 2. CAMADA DE CONTEÚDO: Fica na mesma posição exacta, flutuando por cima -->
-  <div class="col-start-1 row-start-1 p-12 text-white">
-    <h1 class="text-4xl font-bold">Texto em cima do vídeo</h1>
-    <p class="mt-4 text-lg">Isto fica perfeitamente centrado/alinhado sobre o vídeo, tal como um Cover do WordPress.</p>
-  </div>
-
-</div>
+<
