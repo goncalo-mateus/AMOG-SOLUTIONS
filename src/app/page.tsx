@@ -44,7 +44,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
       
       {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/60 backdrop-blur-md border-b border-white/10 text-white">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/40 backdrop-blur-md border-b border-white/10 text-white">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           
           {/* Logo / Brand */}
@@ -78,7 +78,6 @@ export default function Home() {
               Get in Touch
             </a>
             
-            {/* Mobile Hamburger Icon */}
             <button className="md:hidden p-2 text-slate-200 hover:text-white focus:outline-none">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16"/>
@@ -89,27 +88,28 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ================= HERO SECTION (WITH VIDEO BACKGROUND) ================= */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+      {/* ================= HERO SECTION WITH FULL-WIDTH BACKGROUND VIDEO ================= */}
+      <section className="relative w-full min-h-[75vh] max-h-[850px] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
         
-        {/* Background Video Layer */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        {/* Background Video Layer (Largura total da tela e sem ocupar espaço no layout) */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center pointer-events-none"
           >
             <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
           </video>
           
-          {/* Dark Overlay for Text Contrast */}
-          <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
+          {/* Dark Overlay com transição de fundo suave na base */}
+          <div className="absolute inset-0 bg-slate-950/60 backdrop-brightness-90"></div>
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
         </div>
 
-        {/* Hero Content Layer */}
-        <div className="relative z-10 max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-white">
+        {/* Hero Content Layer (Texto por cima) */}
+        <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Column */}
           <div className="lg:col-span-7">
@@ -117,18 +117,18 @@ export default function Home() {
               01 • SENSITIVE UTOPIA
             </span>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-light tracking-tight leading-[1.1]">
+            <h1 className="text-4xl sm:text-6xl font-serif font-light tracking-tight leading-[1.1]">
               Technology <br />
               that learns to <br />
               <span className="italic font-normal">touch with care.</span>
             </h1>
 
-            <p className="mt-8 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
+            <p className="mt-6 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
               We do not build machines that take people’s place. We cultivate sensitive extensions: systems that protect human work from mechanical weight, so attention stays where it is irreplaceable.
             </p>
 
             {/* Our Promise Quote Box */}
-            <div className="mt-8 border-l-2 border-[#FF6B4A] pl-4 py-1">
+            <div className="mt-6 border-l-2 border-[#FF6B4A] pl-4 py-1">
               <span className="text-[10px] uppercase tracking-widest text-slate-300 block font-semibold">
                 OUR PROMISE
               </span>
@@ -137,28 +137,28 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#packages"
-                className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 transition-all shadow-md"
+                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 transition-all shadow-md"
               >
                 Explore Solutions
               </a>
               <a
                 href="mailto:contacto@amog.pt"
-                className="inline-block bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-white hover:text-[#0F172A] transition-all"
+                className="inline-block bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-white hover:text-[#0F172A] transition-all"
               >
                 Book a Diagnosis
               </a>
             </div>
           </div>
 
-          {/* Right Column: Editorial Curved Frame Placeholder */}
+          {/* Right Column: Curved Frame Placeholder */}
           <div className="lg:col-span-5 relative hidden lg:block">
-            <div className="w-full h-[520px] rounded-t-[180px] rounded-b-2xl border border-white/30 bg-white/5 backdrop-blur-sm p-4 relative overflow-hidden group hover:border-[#FF6B4A]/60 transition-all duration-500">
-              <div className="w-full h-full rounded-t-[165px] rounded-b-xl border border-white/10 overflow-hidden relative flex items-center justify-center">
+            <div className="w-full h-[420px] rounded-t-[160px] rounded-b-2xl border border-white/30 bg-white/5 backdrop-blur-sm p-3 relative overflow-hidden group hover:border-[#FF6B4A]/60 transition-all duration-500">
+              <div className="w-full h-full rounded-t-[145px] rounded-b-xl border border-white/10 overflow-hidden relative flex items-center justify-center">
                 <span className="text-xs font-mono text-slate-300 uppercase tracking-widest text-center px-6">
-                  [ Editorial Frame / Interactive 3D Canvas ]
+                  [ Interactive 3D / Editorial Asset ]
                 </span>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* ================= PHILOSOPHY / ABOUT SECTION ================= */}
-      <section id="about" className="py-20 px-6 max-w-6xl mx-auto">
+      <section id="about" className="py-20 px-6 max-w-6xl mx-auto relative z-20">
         <div className="p-10 md:p-16 rounded-3xl bg-white border border-slate-200/80 shadow-sm">
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#A62D26]">
