@@ -88,27 +88,30 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ================= HERO SECTION WITH FULL-WIDTH BACKGROUND VIDEO ================= */}
-      <section className="relative w-full min-h-[75vh] max-h-[850px] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
+      {/* ================= HERO SECTION (COM CAMADA DE VÍDEO EM BACKGROUND) ================= */}
+      <section className="relative w-full min-h-[80vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
         
-        {/* Background Video Layer (Largura total da tela e sem ocupar espaço no layout) */}
-        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        {/* 1. Camada de Vídeo (Absolute em relação à secção) */}
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover object-center pointer-events-none"
+            preload="auto"
+            className="w-full h-full object-cover object-center"
           >
             <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
           </video>
           
-          {/* Dark Overlay com transição de fundo suave na base */}
-          <div className="absolute inset-0 bg-slate-950/60 backdrop-brightness-90"></div>
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
+          {/* Overlay escuro para garantir leitura do texto branco */}
+          <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
+          
+          {/* Suavização na base para fundir com a secção seguinte */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
         </div>
 
-        {/* Hero Content Layer (Texto por cima) */}
+        {/* 2. Conteúdo em Texto (Sobreposto ao vídeo com z-10) */}
         <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Text Column */}
@@ -153,7 +156,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Column: Curved Frame Placeholder */}
+          {/* Right Column: Frame para elemento visual/3D */}
           <div className="lg:col-span-5 relative hidden lg:block">
             <div className="w-full h-[420px] rounded-t-[160px] rounded-b-2xl border border-white/30 bg-white/5 backdrop-blur-sm p-3 relative overflow-hidden group hover:border-[#FF6B4A]/60 transition-all duration-500">
               <div className="w-full h-full rounded-t-[145px] rounded-b-xl border border-white/10 overflow-hidden relative flex items-center justify-center">
