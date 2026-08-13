@@ -1,3 +1,7 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function Home() {
   const packages = [
     {
@@ -40,16 +44,41 @@ export default function Home() {
     },
   ];
 
+  // Variantes de Animação reutilizáveis
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
       
       {/* ================= HEADER ================= */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/40 backdrop-blur-md border-b border-white/10 text-white">
+      <motion.header 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 left-0 right-0 z-50 bg-slate-900/40 backdrop-blur-md border-b border-white/10 text-white"
+      >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           
           {/* Logo / Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white">
+            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white shadow-sm">
               A
             </div>
             <div>
@@ -73,7 +102,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <a 
               href="mailto:contacto@amog.pt" 
-              className="text-xs font-semibold text-white bg-[#FF6B4A] px-5 py-2.5 rounded-full hover:bg-opacity-90 transition-all shadow-sm"
+              className="text-xs font-semibold text-white bg-[#FF6B4A] px-5 py-2.5 rounded-full hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-sm"
             >
               Get in Touch
             </a>
@@ -86,12 +115,12 @@ export default function Home() {
           </div>
 
         </div>
-      </header>
+      </motion.header>
 
-      {/* ================= HERO SECTION (COM CAMADA DE VÍDEO EM BACKGROUND) ================= */}
+      {/* ================= HERO SECTION WITH VIDEO BACKGROUND ================= */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
         
-        {/* 1. Camada de Vídeo (Absolute em relação à secção) */}
+        {/* Background Video Layer */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
           <video
             autoPlay
@@ -104,46 +133,46 @@ export default function Home() {
             <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
           </video>
           
-          {/* Overlay escuro para garantir leitura do texto branco */}
           <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
-          
-          {/* Suavização na base para fundir com a secção seguinte */}
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
         </div>
 
-        {/* 2. Conteúdo em Texto (Sobreposto ao vídeo com z-10) */}
+        {/* Hero Animated Content */}
         <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Text Column */}
-          <div className="lg:col-span-7">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FF6B4A] block mb-4">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="lg:col-span-7"
+          >
+            <motion.span variants={fadeInUp} className="text-xs font-mono uppercase tracking-widest text-[#FF6B4A] block mb-4">
               01 • SENSITIVE UTOPIA
-            </span>
+            </motion.span>
             
-            <h1 className="text-4xl sm:text-6xl font-serif font-light tracking-tight leading-[1.1]">
+            <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl font-serif font-light tracking-tight leading-[1.1]">
               Technology <br />
               that learns to <br />
               <span className="italic font-normal">touch with care.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="mt-6 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
+            <motion.p variants={fadeInUp} className="mt-6 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
               We do not build machines that take people’s place. We cultivate sensitive extensions: systems that protect human work from mechanical weight, so attention stays where it is irreplaceable.
-            </p>
+            </motion.p>
 
-            {/* Our Promise Quote Box */}
-            <div className="mt-6 border-l-2 border-[#FF6B4A] pl-4 py-1">
+            <motion.div variants={fadeInUp} className="mt-6 border-l-2 border-[#FF6B4A] pl-4 py-1">
               <span className="text-[10px] uppercase tracking-widest text-slate-300 block font-semibold">
                 OUR PROMISE
               </span>
               <p className="text-sm font-serif italic text-white mt-1">
                 “Give your team superpowers, never replace their presence.”
               </p>
-            </div>
+            </motion.div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#packages"
-                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 transition-all shadow-md"
+                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-md"
               >
                 Explore Solutions
               </a>
@@ -153,11 +182,16 @@ export default function Home() {
               >
                 Book a Diagnosis
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column: Frame para elemento visual/3D */}
-          <div className="lg:col-span-5 relative hidden lg:block">
+          {/* Frame com efeito de flutuação */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="lg:col-span-5 relative hidden lg:block"
+          >
             <div className="w-full h-[420px] rounded-t-[160px] rounded-b-2xl border border-white/30 bg-white/5 backdrop-blur-sm p-3 relative overflow-hidden group hover:border-[#FF6B4A]/60 transition-all duration-500">
               <div className="w-full h-full rounded-t-[145px] rounded-b-xl border border-white/10 overflow-hidden relative flex items-center justify-center">
                 <span className="text-xs font-mono text-slate-300 uppercase tracking-widest text-center px-6">
@@ -165,14 +199,20 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
 
-      {/* ================= PHILOSOPHY / ABOUT SECTION ================= */}
+      {/* ================= PHILOSOPHY / ABOUT SECTION (ANIMATED ON SCROLL) ================= */}
       <section id="about" className="py-20 px-6 max-w-6xl mx-auto relative z-20">
-        <div className="p-10 md:p-16 rounded-3xl bg-white border border-slate-200/80 shadow-sm">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="p-10 md:p-16 rounded-3xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow"
+        >
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#A62D26]">
               Our Philosophy
@@ -184,24 +224,38 @@ export default function Home() {
               At AMOG Solutions, we approach technology from a human-first perspective. Advanced automation and artificial intelligence should act as your team’s ultimate co-pilot—handling mechanical tasks so your people can focus on strategy, innovation, and high-value relationships.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* ================= PACKAGES SECTION ================= */}
+      {/* ================= PACKAGES SECTION (ANIMATED CARDS) ================= */}
       <section id="packages" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-200/80">
-        <div className="mb-12">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="mb-12"
+        >
           <h2 className="text-xs font-bold tracking-widest uppercase text-slate-400">
             Operational Architecture
           </h2>
           <p className="mt-2 text-3xl font-normal tracking-tight text-[#0F172A]">
             Service Suites & Systems Engineering
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch"
+        >
           {packages.map((pkg, idx) => (
-            <div 
+            <motion.div 
               key={idx}
+              variants={fadeInUp}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 ${
                 pkg.featured 
                   ? "bg-[#0F172A] text-white shadow-xl ring-2 ring-[#FF6B4A]" 
@@ -256,14 +310,20 @@ export default function Home() {
                   {pkg.cta}
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* ================= CALL TO ACTION ================= */}
       <section id="contact" className="my-16 px-6 max-w-6xl mx-auto">
-        <div className="p-10 md:p-16 rounded-3xl bg-[#0F172A] text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-xl">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="p-10 md:p-16 rounded-3xl bg-[#0F172A] text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-xl"
+        >
           <div className="max-w-xl">
             <span className="text-[11px] font-bold tracking-widest uppercase text-[#A8D6BB]">
               Ready to upgrade your workflow?
@@ -278,12 +338,12 @@ export default function Home() {
           <div>
             <a
               href="mailto:contacto@amog.pt"
-              className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-xs uppercase tracking-wider font-medium hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap"
+              className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-xs uppercase tracking-wider font-medium hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-md whitespace-nowrap"
             >
               Talk to an Expert
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ================= FOOTER ================= */}
