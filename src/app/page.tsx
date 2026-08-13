@@ -44,7 +44,7 @@ export default function Home() {
     },
   ];
 
-  // Variantes de Animação reutilizáveis
+  // Variantes de Animação
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
@@ -65,14 +65,14 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
+    <main className="min-h-screen bg-[#F4E8A3] text-[#0F172A] font-sans antialiased selection:bg-[#FF6B4A] selection:text-white">
       
       {/* ================= HEADER ================= */}
       <motion.header 
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-slate-900/40 backdrop-blur-md border-b border-white/10 text-white"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/80 backdrop-blur-md border-b border-white/10 text-white"
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           
@@ -117,7 +117,7 @@ export default function Home() {
         </div>
       </motion.header>
 
-      {/* ================= HERO SECTION WITH VIDEO BACKGROUND ================= */}
+      {/* ================= HERO SECTION ================= */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
         
         {/* Background Video Layer */}
@@ -134,10 +134,12 @@ export default function Home() {
           </video>
           
           <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent"></div>
+          
+          {/* Degrau suave para fundir com a cor amarela base da página */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F4E8A3] to-transparent"></div>
         </div>
 
-        {/* Hero Animated Content */}
+        {/* Hero Content */}
         <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <motion.div 
@@ -185,7 +187,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Frame com efeito de flutuação */}
+          {/* Right Frame */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -204,14 +206,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PHILOSOPHY / ABOUT SECTION (ANIMATED ON SCROLL) ================= */}
+      {/* ================= PHILOSOPHY / ABOUT SECTION ================= */}
       <section id="about" className="py-20 px-6 max-w-6xl mx-auto relative z-20">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="p-10 md:p-16 rounded-3xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow"
+          className="p-10 md:p-16 rounded-3xl bg-white/90 backdrop-blur-sm border border-[#0F172A]/10 shadow-sm hover:shadow-md transition-shadow"
         >
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#A62D26]">
@@ -220,15 +222,15 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-serif text-[#0F172A] tracking-tight">
               Boosting workforce productivity, not replacing jobs.
             </h2>
-            <p className="mt-4 text-slate-600 font-light text-sm leading-relaxed">
+            <p className="mt-4 text-slate-700 font-light text-sm leading-relaxed">
               At AMOG Solutions, we approach technology from a human-first perspective. Advanced automation and artificial intelligence should act as your team’s ultimate co-pilot—handling mechanical tasks so your people can focus on strategy, innovation, and high-value relationships.
             </p>
           </div>
         </motion.div>
       </section>
 
-      {/* ================= PACKAGES SECTION (ANIMATED CARDS) ================= */}
-      <section id="packages" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-200/80">
+      {/* ================= PACKAGES SECTION ================= */}
+      <section id="packages" className="py-16 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -236,7 +238,7 @@ export default function Home() {
           variants={fadeInUp}
           className="mb-12"
         >
-          <h2 className="text-xs font-bold tracking-widest uppercase text-slate-400">
+          <h2 className="text-xs font-bold tracking-widest uppercase text-slate-600">
             Operational Architecture
           </h2>
           <p className="mt-2 text-3xl font-normal tracking-tight text-[#0F172A]">
@@ -259,7 +261,7 @@ export default function Home() {
               className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 ${
                 pkg.featured 
                   ? "bg-[#0F172A] text-white shadow-xl ring-2 ring-[#FF6B4A]" 
-                  : "bg-white text-[#0F172A] border border-slate-200/80 hover:shadow-lg"
+                  : "bg-white/90 backdrop-blur-sm text-[#0F172A] border border-[#0F172A]/10 hover:shadow-lg"
               }`}
             >
               <div>
@@ -283,7 +285,7 @@ export default function Home() {
 
                 <div className="mt-8 space-y-3">
                   <p className={`text-xs font-bold tracking-wider uppercase ${
-                    pkg.featured ? "text-[#A8D6BB]" : "text-slate-400"
+                    pkg.featured ? "text-[#A8D6BB]" : "text-slate-500"
                   }`}>
                     Included Infrastructure:
                   </p>
@@ -347,14 +349,14 @@ export default function Home() {
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="py-12 px-6 max-w-6xl mx-auto border-t border-slate-200/80 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+      <footer className="py-12 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-700 gap-4">
         <div>
           <p>© {new Date().getFullYear()} AMOG SOLUTIONS.</p>
-          <p className="text-[10px] text-slate-400 mt-0.5">Advanced Machinery for Operational Growth</p>
+          <p className="text-[10px] text-slate-600 mt-0.5">Advanced Machinery for Operational Growth</p>
         </div>
-        <div className="flex gap-6">
-          <a href="mailto:contacto@amog.pt" className="hover:text-[#0F172A] transition-colors">Email</a>
-          <a href="#packages" className="hover:text-[#0F172A] transition-colors">Solutions</a>
+        <div className="flex gap-6 font-medium">
+          <a href="mailto:contacto@amog.pt" className="hover:text-[#FF6B4A] transition-colors">Email</a>
+          <a href="#packages" className="hover:text-[#FF6B4A] transition-colors">Solutions</a>
         </div>
       </footer>
 
