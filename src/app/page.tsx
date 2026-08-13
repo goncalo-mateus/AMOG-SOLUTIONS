@@ -278,3 +278,27 @@ export default function Home() {
     </main>
   );
 } 
+<!-- Container principal com a grelha/camada -->
+<div class="relative grid min-h-[500px] w-full items-center overflow-hidden rounded-3xl">
+  
+  <!-- 1. CAMADA DE FUNDO: O Vídeo e o Overlay ficam na mesma célula (linha 1, coluna 1) -->
+  <video 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    class="col-start-1 row-start-1 h-full w-full object-cover"
+  >
+    <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Overlay de cor/opacidade por cima do vídeo -->
+  <div class="col-start-1 row-start-1 h-full w-full bg-black/40 backdrop-blur-[2px]"></div>
+
+  <!-- 2. CAMADA DE CONTEÚDO: Fica na mesma posição exacta, flutuando por cima -->
+  <div class="col-start-1 row-start-1 p-12 text-white">
+    <h1 class="text-4xl font-bold">Texto em cima do vídeo</h1>
+    <p class="mt-4 text-lg">Isto fica perfeitamente centrado/alinhado sobre o vídeo, tal como um Cover do WordPress.</p>
+  </div>
+
+</div>
