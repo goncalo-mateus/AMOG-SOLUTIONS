@@ -1,3 +1,32 @@
+```python
+# Let's inspect the HTML/CSS requirement for the video being "behind" the text *inside* the card, or if they meant a two-column grid inside the card where the right side has the video and the left side has the text (like in the Framer screenshot).
+# Looking closely at the Framer screenshot:
+# It's a single card with max-w-[1082px]. Inside this card:
+# - On the left side: Text (01 • SENSITIVE UTOPIA, title, paragraph, promise).
+# - On the right side: A graphic element with an arch shape containing a person eating, or the video!
+# Wait! In the Framer screenshot, the right side has a curved/arch shape frame with an image or video, and the left side has the text on the plain dark background of the card.
+# Let's verify this layout structure!
+print("Re-evaluating Framer screenshot layout: 2 columns inside the hero card")
+
+
+```
+
+```text
+Re-evaluating Framer screenshot layout: 2 columns inside the hero card
+
+
+```
+
+Olhando com extrema atenção para a imagem do Framer que mandaste (e peço desculpa por só agora ter captado o layout exato): aquilo **não é o vídeo a ocupar o fundo da caixa toda**.
+
+Na imagem, a caixa do Hero tem duas colunas:
+
+1. **Lado esquerdo:** O texto em fundo escuro (`slate-950`).
+2. **Lado direito:** Um bloco com uma moldura em arco (com uma borda arredondada/estilizada) onde o vídeo (ou imagem) está metido lá dentro, perfeitamente delimitado à direita!
+
+Aqui tens o código exato com essa estrutura de **duas colunas dentro da caixa** (texto à esquerda, vídeo à direita dentro do seu próprio espaço com bordas arredondadas/arco), exatamente como estava no teu Framer:
+
+```tsx
 'use client';
 
 import React from 'react';
@@ -87,28 +116,12 @@ export default function Home() {
         </div>
       </motion.header>
 
-      {/* ================= HERO SECTION (O VÍDEO FICA DENTRO DESTA CAIXA) ================= */}
+      {/* ================= HERO SECTION (2 COLUNAS: TEXTO ESQ, VÍDEO DIR COM ARCO) ================= */}
       <section className="relative w-full pt-28 pb-12 px-6 flex justify-center">
-        <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl flex items-center bg-slate-950">
+        <div className="relative w-full max-w-[1082px] rounded-[32px] overflow-hidden shadow-2xl bg-slate-950 grid grid-cols-1 lg:grid-cols-12 items-center p-8 lg:p-12 gap-8 text-white">
           
-          {/* O Vídeo está aqui dentro, absolutamente posicionado no fundo da caixa */}
-          <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover object-center scale-105"
-            >
-              <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
-            </video>
-            {/* Gradiente escuro apenas à esquerda para o texto se destacar, deixando o vídeo ver-se à direita */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/40 to-transparent"></div>
-          </div>
-
-          {/* Texto por cima do vídeo, alinhado à esquerda dentro da caixa */}
-          <div className="relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white">
+          {/* Lado Esquerdo: Texto */}
+          <div className="lg:col-span-6 z-10">
             <motion.div 
               initial="hidden"
               animate="visible"
@@ -118,13 +131,13 @@ export default function Home() {
                 01 • SENSITIVE UTOPIA
               </motion.span>
               
-              <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl font-serif font-light tracking-tight leading-[1.1]">
+              <motion.h1 variants={fadeInUp} className="text-3xl sm:text-5xl font-serif font-light tracking-tight leading-[1.1]">
                 Technology <br />
                 that learns to <br />
                 <span className="italic font-normal">touch with care.</span>
               </motion.h1>
 
-              <motion.p variants={fadeInUp} className="mt-6 text-sm sm:text-base text-slate-200 font-light leading-relaxed">
+              <motion.p variants={fadeInUp} className="mt-6 text-sm text-slate-300 font-light leading-relaxed">
                 We do not build machines that take people’s place. We cultivate sensitive extensions that protect human work from mechanical weight, so attention stays where it is irreplaceable.
               </motion.p>
 
@@ -137,6 +150,22 @@ export default function Home() {
                 </p>
               </motion.div>
             </motion.div>
+          </div>
+
+          {/* Lado Direito: Vídeo dentro de um bloco com forma de arco estilo Framer */}
+          <div className="lg:col-span-6 relative w-full h-[450px] lg:h-[520px] rounded-t-[180px] rounded-b-[24px] overflow-hidden border border-white/10 shadow-inner">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover object-center"
+            >
+              <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
+            </video>
+            {/* Sutil overlay escuro para integrar perfeitamente */}
+            <div className="absolute inset-0 bg-slate-950/15"></div>
           </div>
 
         </div>
@@ -278,3 +307,5 @@ export default function Home() {
     </main>
   );
 }
+
+```
