@@ -5,26 +5,20 @@ export default function Home() {
         <span className="font-bold tracking-widest text-xs uppercase text-[#0F172A]">
           AMOG SOLUTIONS
         </span>
-        <a 
-          href="mailto:contacto@amog.pt" 
-          className="text-sm font-medium hover:text-[#FF6B4A] transition-colors"
-        >
+        <a href="mailto:contacto@amog.pt" className="text-sm font-medium hover:text-[#FF6B4A] transition-colors">
           Contactar
         </a>
       </header>
 
       <section className="py-24 max-w-3xl">
         <h1 className="text-4xl sm:text-6xl font-normal tracking-tight leading-tight text-[#0F172A]">
-          A inteligência artificial como companheira sensível e artesanal.
+          Sistemas Inteligentes & Motores de Vendas por IA
         </h1>
         <p className="mt-8 text-lg sm:text-xl text-slate-600 font-light leading-relaxed">
-          Desenvolvemos ecossistemas de dados, motores de vendas e arquiteturas automáticas em perfeita simbiose com a sua operação.
+          Arquitetura de RevOps, automações avançadas de dados e integração de infraestruturas à medida.
         </p>
         <div className="mt-10">
-          <a
-            href="#solucoes"
-            className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all shadow-sm"
-          >
+          <a href="#solucoes" className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-sm font-medium hover:bg-opacity-90 transition-all shadow-sm">
             Explorar Soluções
           </a>
         </div>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AMOG SOLUTIONS | Sistemas Inteligentes & RevOps",
-  description: "Motores de vendas e automação de dados.",
+  title: "AMOG SOLUTIONS",
+  description: "Sistemas Inteligentes & RevOps",
 };
 
 export default function RootLayout({
