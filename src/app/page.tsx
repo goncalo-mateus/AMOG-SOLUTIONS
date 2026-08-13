@@ -63,9 +63,6 @@ export default function Home() {
               <span className="font-bold tracking-widest text-sm uppercase block">
                 AMOG SOLUTIONS
               </span>
-              <span className="text-[9px] text-slate-300 tracking-wider hidden sm:block">
-                Advanced Machinery for Operational Growth
-              </span>
             </div>
           </div>
 
@@ -87,51 +84,34 @@ export default function Home() {
       </motion.header>
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative w-full min-h-[80vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
+      <section className="relative w-full pt-32 pb-20 flex flex-col items-center">
+        {/* VÍDEO NOVO: Mais largo, menos alto, atrás do texto */}
+        <div className="w-[85%] lg:w-[65%] aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl z-0 mb-12">
           <video
             autoPlay
             loop
             muted
             playsInline
-            preload="auto"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover"
           >
             <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-slate-950/65"></div>
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F4E8A3] to-transparent"></div>
         </div>
 
-        <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-            className="lg:col-span-7"
-          >
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
             <motion.span variants={fadeInUp} className="text-xs font-mono uppercase tracking-widest text-[#FF6B4A] block mb-4">
               01 • SENSITIVE UTOPIA
             </motion.span>
             
             <motion.h1 variants={fadeInUp} className="text-4xl sm:text-6xl font-serif font-light tracking-tight leading-[1.1]">
-              Technology <br />
-              that learns to <br />
+              Technology that learns to <br />
               <span className="italic font-normal">touch with care.</span>
             </motion.h1>
 
-            <motion.p variants={fadeInUp} className="mt-6 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
+            <motion.p variants={fadeInUp} className="mt-6 text-base sm:text-lg text-slate-800 font-light leading-relaxed max-w-xl mx-auto">
               We do not build machines that take people’s place. We cultivate sensitive extensions that protect human work from mechanical weight.
             </motion.p>
-
-            <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="#packages"
-                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 transition-all shadow-md"
-              >
-                Explore Solutions
-              </a>
-            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -143,7 +123,7 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="p-10 md:p-16 rounded-3xl bg-white/90 backdrop-blur-sm border border-[#0F172A]/10 shadow-sm"
+          className="p-10 md:p-16 rounded-3xl bg-white/60 backdrop-blur-sm border border-[#0F172A]/10 shadow-sm"
         >
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#A62D26]">
@@ -159,7 +139,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= PACKAGES / QUADRADOS DE SERVIÇOS ================= */}
+      {/* ================= PACKAGES / SERVIÇOS ================= */}
       <section id="packages" className="py-20 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10">
         <motion.div 
           initial="hidden"
@@ -176,28 +156,27 @@ export default function Home() {
           </h2>
         </motion.div>
 
-        {/* Grelha de Quadrados Perfeitos (Aspect Square) */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
         >
           {packages.map((pkg, idx) => (
             <motion.div 
               key={idx}
               variants={fadeInUp}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className={`p-8 aspect-square flex flex-col justify-between border rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md ${
+              className={`p-8 flex flex-col justify-between border-2 rounded-3xl transition-all duration-300 shadow-sm hover:shadow-md ${
                 pkg.featured 
-                  ? "bg-[#0F172A] text-white border-[#0F172A] ring-2 ring-[#FF6B4A]" 
-                  : "bg-white text-[#0F172A] border-[#0F172A]/15 hover:border-[#0F172A]/40"
+                  ? "bg-[#0F172A] text-white border-[#0F172A]" 
+                  : "bg-white text-[#0F172A] border-[#0F172A]/10 hover:border-[#0F172A]/30"
               }`}
             >
               <div>
-                <div className="flex justify-between items-center gap-2 mb-4">
-                  <span className={`text-[10px] font-mono tracking-wider uppercase px-2.5 py-1 rounded-md ${
+                <div className="flex mb-4">
+                  <span className={`text-[10px] font-mono tracking-wider uppercase px-3 py-1 rounded-full ${
                     pkg.featured ? "bg-[#FF6B4A] text-white" : "bg-[#F4E8A3] text-[#0F172A] font-bold"
                   }`}>
                     {pkg.badge}
@@ -208,17 +187,17 @@ export default function Home() {
                   {pkg.name}
                 </h3>
                 
-                <p className={`mt-3 text-xs font-light leading-relaxed ${
+                <p className={`mt-4 text-sm font-light leading-relaxed ${
                   pkg.featured ? "text-slate-300" : "text-slate-600"
                 }`}>
                   {pkg.summary}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-current/10">
+              <div className="pt-8">
                 <a
                   href="mailto:contacto@amog.pt"
-                  className={`block w-full text-center py-3 px-4 rounded-full text-xs font-semibold tracking-wider uppercase transition-all ${
+                  className={`block w-full text-center py-4 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${
                     pkg.featured 
                       ? "bg-[#FF6B4A] text-white hover:bg-opacity-90" 
                       : "bg-[#0F172A] text-white hover:bg-[#FF6B4A]"
