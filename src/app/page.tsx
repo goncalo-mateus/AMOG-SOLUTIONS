@@ -72,7 +72,7 @@ export default function Home() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/80 backdrop-blur-md border-b border-white/10 text-white"
+        className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/85 backdrop-blur-md border-b border-white/10 text-white"
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           
@@ -135,7 +135,7 @@ export default function Home() {
           
           <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
           
-          {/* Degrau suave para fundir com a cor amarela base da página */}
+          {/* Transição suave de gradiente para a cor amarela base */}
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F4E8A3] to-transparent"></div>
         </div>
 
@@ -187,7 +187,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Right Frame */}
+          {/* Frame Direito */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -229,8 +229,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= PACKAGES SECTION ================= */}
-      <section id="packages" className="py-16 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10">
+      {/* ================= PACKAGES / QUADRADOS DE SERVIÇOS ================= */}
+      <section id="packages" className="py-20 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -238,72 +238,57 @@ export default function Home() {
           variants={fadeInUp}
           className="mb-12"
         >
-          <h2 className="text-xs font-bold tracking-widest uppercase text-slate-600">
-            Operational Architecture
-          </h2>
-          <p className="mt-2 text-3xl font-normal tracking-tight text-[#0F172A]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#A62D26]">
+            02 • SOLUTIONS
+          </span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-serif tracking-tight text-[#0F172A]">
             Service Suites & Systems Engineering
-          </p>
+          </h2>
         </motion.div>
 
+        {/* Grelha de Quadrados Perfeitos */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch"
         >
           {packages.map((pkg, idx) => (
             <motion.div 
               key={idx}
               variants={fadeInUp}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`p-8 rounded-3xl flex flex-col justify-between transition-all duration-300 ${
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className={`p-8 aspect-square flex flex-col justify-between border rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md ${
                 pkg.featured 
-                  ? "bg-[#0F172A] text-white shadow-xl ring-2 ring-[#FF6B4A]" 
-                  : "bg-white/90 backdrop-blur-sm text-[#0F172A] border border-[#0F172A]/10 hover:shadow-lg"
+                  ? "bg-[#0F172A] text-white border-[#0F172A] ring-2 ring-[#FF6B4A]" 
+                  : "bg-white text-[#0F172A] border-[#0F172A]/15 hover:border-[#0F172A]/40"
               }`}
             >
               <div>
-                <div className="flex justify-between items-center gap-2">
-                  <span className={`text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md ${
-                    pkg.featured ? "bg-[#FF6B4A] text-white" : "bg-slate-100 text-slate-600"
+                <div className="flex justify-between items-center gap-2 mb-4">
+                  <span className={`text-[10px] font-mono tracking-wider uppercase px-2.5 py-1 rounded-md ${
+                    pkg.featured ? "bg-[#FF6B4A] text-white" : "bg-[#F4E8A3] text-[#0F172A] font-bold"
                   }`}>
                     {pkg.badge}
                   </span>
                 </div>
 
-                <h3 className="mt-6 text-2xl font-medium tracking-tight">
+                <h3 className="text-2xl font-serif font-medium tracking-tight">
                   {pkg.name}
                 </h3>
                 
-                <p className={`mt-4 text-xs font-light leading-relaxed ${
+                <p className={`mt-3 text-xs font-light leading-relaxed ${
                   pkg.featured ? "text-slate-300" : "text-slate-600"
                 }`}>
                   {pkg.summary}
                 </p>
-
-                <div className="mt-8 space-y-3">
-                  <p className={`text-xs font-bold tracking-wider uppercase ${
-                    pkg.featured ? "text-[#A8D6BB]" : "text-slate-500"
-                  }`}>
-                    Included Infrastructure:
-                  </p>
-                  <ul className="space-y-2 text-xs font-light">
-                    {pkg.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2">
-                        <span className={pkg.featured ? "text-[#FF6B4A]" : "text-[#A62D26]"}>✓</span>
-                        <span className={pkg.featured ? "text-slate-200" : "text-slate-700"}>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
 
-              <div className="mt-10 pt-6 border-t border-slate-200/20">
+              <div className="pt-4 border-t border-current/10">
                 <a
                   href="mailto:contacto@amog.pt"
-                  className={`block w-full text-center py-3 px-6 rounded-full text-xs font-semibold transition-all ${
+                  className={`block w-full text-center py-3 px-4 rounded-full text-xs font-semibold tracking-wider uppercase transition-all ${
                     pkg.featured 
                       ? "bg-[#FF6B4A] text-white hover:bg-opacity-90" 
                       : "bg-[#0F172A] text-white hover:bg-[#FF6B4A]"
