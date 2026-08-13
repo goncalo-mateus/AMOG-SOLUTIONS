@@ -8,43 +8,25 @@ export default function Home() {
       name: "Business Starter Pack",
       badge: "Fast Market Entry",
       featured: false,
-      summary: "Designed for startups and new ventures that need to enter the market quickly with a professional brand image and an essential outbound lead generation engine.",
-      features: [
-        "Professional email setup and automated outbound outreach sequences",
-        "Instant lead notifications routed directly to Slack or WhatsApp",
-        "Automated calendar booking and meeting scheduling workflows",
-      ],
+      summary: "Designed for startups and new ventures that need to enter the market quickly with a professional brand image.",
       cta: "Get Started",
     },
     {
       name: "Full Scale Growth Engine",
       badge: "Most Popular",
       featured: true,
-      summary: "A complete end-to-end architecture for growing companies wanting enterprise-grade operations, seamlessly connecting branding, paid traffic, and sales execution.",
-      features: [
-        "AI Sales Engine: Automated prospecting and intelligent response triage",
-        "Autonomous calendar booking directly into your sales team’s schedule",
-        "RevOps & CRM Integration: End-to-end setup (HubSpot / Pipedrive)",
-        "Automated lead qualification powered by AI & Stripe payment flows",
-      ],
+      summary: "A complete end-to-end architecture for growing companies wanting enterprise-grade operations and sales execution.",
       cta: "Scale Your Operation",
     },
     {
       name: "Turnkey Enterprise System",
       badge: "Custom AI & Infrastructure",
       featured: false,
-      summary: "A complete turnkey operation for capital-backed enterprises requiring total automation, proprietary AI trained on internal data, and guaranteed ongoing support.",
-      features: [
-        "Premium Branding, multi-page web platform, and full marketing asset kit",
-        "Proprietary AI Agent trained on your private internal database",
-        "Advanced database infrastructure integration (Supabase / PostgreSQL)",
-        "2 months of dedicated maintenance and continuous process optimization",
-      ],
-      cta: "Request Enterprise Proposal",
+      summary: "A complete turnkey operation for capital-backed enterprises requiring total automation and proprietary AI.",
+      cta: "Request Proposal",
     },
   ];
 
-  // Variantes de Animação
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
@@ -58,9 +40,7 @@ export default function Home() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -75,10 +55,8 @@ export default function Home() {
         className="fixed top-0 left-0 right-0 z-50 bg-[#0F172A]/85 backdrop-blur-md border-b border-white/10 text-white"
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          
-          {/* Logo / Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white shadow-sm">
+            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white">
               A
             </div>
             <div>
@@ -91,36 +69,25 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Navigation Links */}
           <nav className="hidden md:flex items-center gap-8 text-xs tracking-wider uppercase font-medium text-slate-200">
             <a href="#about" className="hover:text-[#FF6B4A] transition-colors">Philosophy</a>
             <a href="#packages" className="hover:text-[#FF6B4A] transition-colors">Solutions</a>
             <a href="#contact" className="hover:text-[#FF6B4A] transition-colors">Contact</a>
           </nav>
 
-          {/* Menu Button / CTA */}
-          <div className="flex items-center gap-4">
+          <div>
             <a 
               href="mailto:contacto@amog.pt" 
-              className="text-xs font-semibold text-white bg-[#FF6B4A] px-5 py-2.5 rounded-full hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-sm"
+              className="text-xs font-semibold text-white bg-[#FF6B4A] px-5 py-2.5 rounded-full hover:bg-opacity-95 transition-all shadow-sm"
             >
               Get in Touch
             </a>
-            
-            <button className="md:hidden p-2 text-slate-200 hover:text-white focus:outline-none">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-            </button>
           </div>
-
         </div>
       </motion.header>
 
       {/* ================= HERO SECTION ================= */}
       <section className="relative w-full min-h-[80vh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-slate-950 text-white">
-        
-        {/* Background Video Layer */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
           <video
             autoPlay
@@ -132,16 +99,11 @@ export default function Home() {
           >
             <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
           </video>
-          
-          <div className="absolute inset-0 bg-slate-950/65 backdrop-brightness-90"></div>
-          
-          {/* Transição suave de gradiente para a cor amarela base */}
+          <div className="absolute inset-0 bg-slate-950/65"></div>
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#F4E8A3] to-transparent"></div>
         </div>
 
-        {/* Hero Content */}
         <div className="relative z-10 max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           <motion.div 
             initial="hidden"
             animate="visible"
@@ -159,50 +121,18 @@ export default function Home() {
             </motion.h1>
 
             <motion.p variants={fadeInUp} className="mt-6 text-base sm:text-lg text-slate-200 font-light leading-relaxed max-w-xl">
-              We do not build machines that take people’s place. We cultivate sensitive extensions: systems that protect human work from mechanical weight, so attention stays where it is irreplaceable.
+              We do not build machines that take people’s place. We cultivate sensitive extensions that protect human work from mechanical weight.
             </motion.p>
-
-            <motion.div variants={fadeInUp} className="mt-6 border-l-2 border-[#FF6B4A] pl-4 py-1">
-              <span className="text-[10px] uppercase tracking-widest text-slate-300 block font-semibold">
-                OUR PROMISE
-              </span>
-              <p className="text-sm font-serif italic text-white mt-1">
-                “Give your team superpowers, never replace their presence.”
-              </p>
-            </motion.div>
 
             <motion.div variants={fadeInUp} className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#packages"
-                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-md"
+                className="inline-block bg-[#FF6B4A] text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-opacity-90 transition-all shadow-md"
               >
                 Explore Solutions
               </a>
-              <a
-                href="mailto:contacto@amog.pt"
-                className="inline-block bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold hover:bg-white hover:text-[#0F172A] transition-all"
-              >
-                Book a Diagnosis
-              </a>
             </motion.div>
           </motion.div>
-
-          {/* Frame Direito */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="lg:col-span-5 relative hidden lg:block"
-          >
-            <div className="w-full h-[420px] rounded-t-[160px] rounded-b-2xl border border-white/30 bg-white/5 backdrop-blur-sm p-3 relative overflow-hidden group hover:border-[#FF6B4A]/60 transition-all duration-500">
-              <div className="w-full h-full rounded-t-[145px] rounded-b-xl border border-white/10 overflow-hidden relative flex items-center justify-center">
-                <span className="text-xs font-mono text-slate-300 uppercase tracking-widest text-center px-6">
-                  [ Interactive 3D / Editorial Asset ]
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
         </div>
       </section>
 
@@ -213,7 +143,7 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
-          className="p-10 md:p-16 rounded-3xl bg-white/90 backdrop-blur-sm border border-[#0F172A]/10 shadow-sm hover:shadow-md transition-shadow"
+          className="p-10 md:p-16 rounded-3xl bg-white/90 backdrop-blur-sm border border-[#0F172A]/10 shadow-sm"
         >
           <div className="max-w-2xl">
             <span className="text-xs font-bold tracking-widest uppercase text-[#A62D26]">
@@ -223,7 +153,7 @@ export default function Home() {
               Boosting workforce productivity, not replacing jobs.
             </h2>
             <p className="mt-4 text-slate-700 font-light text-sm leading-relaxed">
-              At AMOG Solutions, we approach technology from a human-first perspective. Advanced automation and artificial intelligence should act as your team’s ultimate co-pilot—handling mechanical tasks so your people can focus on strategy, innovation, and high-value relationships.
+              At AMOG Solutions, we approach technology from a human-first perspective. Automation should act as your team’s ultimate co-pilot.
             </p>
           </div>
         </motion.div>
@@ -246,7 +176,7 @@ export default function Home() {
           </h2>
         </motion.div>
 
-        {/* Grelha de Quadrados Perfeitos */}
+        {/* Grelha de Quadrados Perfeitos (Aspect Square) */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -318,14 +248,11 @@ export default function Home() {
             <h2 className="mt-4 text-3xl sm:text-4xl font-normal tracking-tight leading-tight">
               Get an architecture blueprint & diagnosis in 48 hours.
             </h2>
-            <p className="mt-4 text-slate-300 font-light text-sm leading-relaxed">
-              We analyze your data bottlenecks, sales pipelines, and AI automation opportunities with zero upfront commitment.
-            </p>
           </div>
           <div>
             <a
               href="mailto:contacto@amog.pt"
-              className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-xs uppercase tracking-wider font-medium hover:bg-opacity-90 hover:scale-105 active:scale-95 transition-all shadow-md whitespace-nowrap"
+              className="inline-block bg-[#FF6B4A] text-white px-8 py-4 rounded-full text-xs uppercase tracking-wider font-medium hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap"
             >
               Talk to an Expert
             </a>
@@ -337,11 +264,9 @@ export default function Home() {
       <footer className="py-12 px-6 max-w-6xl mx-auto border-t border-[#0F172A]/10 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-700 gap-4">
         <div>
           <p>© {new Date().getFullYear()} AMOG SOLUTIONS.</p>
-          <p className="text-[10px] text-slate-600 mt-0.5">Advanced Machinery for Operational Growth</p>
         </div>
         <div className="flex gap-6 font-medium">
           <a href="mailto:contacto@amog.pt" className="hover:text-[#FF6B4A] transition-colors">Email</a>
-          <a href="#packages" className="hover:text-[#FF6B4A] transition-colors">Solutions</a>
         </div>
       </footer>
 
