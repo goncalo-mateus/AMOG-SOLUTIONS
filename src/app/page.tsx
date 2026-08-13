@@ -87,10 +87,11 @@ export default function Home() {
         </div>
       </motion.header>
 
-      {/* ================= HERO SECTION ================= */}
+      {/* ================= HERO SECTION (O VÍDEO FICA DENTRO DESTA CAIXA) ================= */}
       <section className="relative w-full pt-28 pb-12 px-6 flex justify-center">
-        <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl flex items-center bg-slate-950"> 
-           
+        <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl flex items-center bg-slate-950">
+          
+          {/* O Vídeo está aqui dentro, absolutamente posicionado no fundo da caixa */}
           <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
             <video
               autoPlay
@@ -102,10 +103,12 @@ export default function Home() {
             >
               <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent"></div> 
+            {/* Gradiente escuro apenas à esquerda para o texto se destacar, deixando o vídeo ver-se à direita */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/40 to-transparent"></div>
           </div>
 
-          <div className="relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white"> 
+          {/* Texto por cima do vídeo, alinhado à esquerda dentro da caixa */}
+          <div className="relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white">
             <motion.div 
               initial="hidden"
               animate="visible"
@@ -178,7 +181,7 @@ export default function Home() {
             Service Suites & Systems Engineering
           </h2>
         </motion.div>
- 
+
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -274,4 +277,4 @@ export default function Home() {
 
     </main>
   );
-} 
+}
