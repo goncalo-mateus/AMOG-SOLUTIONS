@@ -1,32 +1,3 @@
-```python
-# Let's inspect the HTML/CSS requirement for the video being "behind" the text *inside* the card, or if they meant a two-column grid inside the card where the right side has the video and the left side has the text (like in the Framer screenshot).
-# Looking closely at the Framer screenshot:
-# It's a single card with max-w-[1082px]. Inside this card:
-# - On the left side: Text (01 • SENSITIVE UTOPIA, title, paragraph, promise).
-# - On the right side: A graphic element with an arch shape containing a person eating, or the video!
-# Wait! In the Framer screenshot, the right side has a curved/arch shape frame with an image or video, and the left side has the text on the plain dark background of the card.
-# Let's verify this layout structure!
-print("Re-evaluating Framer screenshot layout: 2 columns inside the hero card")
-
-
-```
-
-```text
-Re-evaluating Framer screenshot layout: 2 columns inside the hero card
-
-
-```
-
-Olhando com extrema atenção para a imagem do Framer que mandaste (e peço desculpa por só agora ter captado o layout exato): aquilo **não é o vídeo a ocupar o fundo da caixa toda**.
-
-Na imagem, a caixa do Hero tem duas colunas:
-
-1. **Lado esquerdo:** O texto em fundo escuro (`slate-950`).
-2. **Lado direito:** Um bloco com uma moldura em arco (com uma borda arredondada/estilizada) onde o vídeo (ou imagem) está metido lá dentro, perfeitamente delimitado à direita!
-
-Aqui tens o código exato com essa estrutura de **duas colunas dentro da caixa** (texto à esquerda, vídeo à direita dentro do seu próprio espaço com bordas arredondadas/arco), exatamente como estava no teu Framer:
-
-```tsx
 'use client';
 
 import React from 'react';
