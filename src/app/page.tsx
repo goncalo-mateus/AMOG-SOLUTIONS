@@ -56,9 +56,7 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white">
-              A
-            </div>
+            <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white"> 
             <div>
               <span className="font-bold tracking-widest text-sm uppercase block">
                 AMOG SOLUTIONS
