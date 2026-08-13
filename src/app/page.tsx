@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -57,6 +58,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-[#FF6B4A] flex items-center justify-center font-bold text-xs text-white">
+              A
+            </div>
             <div>
               <span className="font-bold tracking-widest text-sm uppercase block">
                 AMOG SOLUTIONS
@@ -84,12 +87,10 @@ export default function Home() {
         </div>
       </motion.header>
 
-      {/* ================= HERO SECTION (EXATAMENTE COMO NO FRAMER) ================= */}
+      {/* ================= HERO SECTION ================= */}
       <section className="relative w-full pt-28 pb-12 px-6 flex justify-center">
-        {/* Content Box com largura delimitada idêntica à referência */}
-        <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl flex items-center bg-slate-950">
-          
-          {/* Vídeo de fundo dentro do container */}
+        <div className="relative w-full max-w-[1082px] min-h-[650px] rounded-[32px] overflow-hidden shadow-2xl flex items-center bg-slate-950"> 
+           
           <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
             <video
               autoPlay
@@ -101,12 +102,10 @@ export default function Home() {
             >
               <source src="/hf_20260813_180344_dd9e9583-b2f2-4034-bf44-2e3f45e05c9c.mp4" type="video/mp4" />
             </video>
-            {/* Overlay escuro adaptativo para garantir legibilidade perfeita do texto */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent"></div> 
           </div>
 
-          {/* Conteúdo de Texto por cima do vídeo à esquerda */}
-          <div className="relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white">
+          <div className="relative z-10 w-full lg:max-w-xl p-8 sm:p-14 text-white"> 
             <motion.div 
               initial="hidden"
               animate="visible"
@@ -140,7 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PHILOSOPHY / ABOUT SECTION ================= */}
+      {/* ================= PHILOSOPHY SECTION ================= */}
       <section id="about" className="py-16 px-6 max-w-[1082px] mx-auto relative z-20">
         <motion.div 
           initial="hidden"
@@ -163,7 +162,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= PACKAGES / QUADRADOS DE SERVIÇOS ================= */}
+      {/* ================= SOLUTIONS SECTION ================= */}
       <section id="packages" className="py-16 px-6 max-w-[1082px] mx-auto border-t border-[#0F172A]/10">
         <motion.div 
           initial="hidden"
@@ -179,8 +178,7 @@ export default function Home() {
             Service Suites & Systems Engineering
           </h2>
         </motion.div>
-
-        {/* Grelha de Quadrados Perfeitos (Aspect Square) */}
+ 
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -276,5 +274,4 @@ export default function Home() {
 
     </main>
   );
-}
-}
+} 
